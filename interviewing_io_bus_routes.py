@@ -13,7 +13,6 @@ a common route exist in seond --> From then only 2 possibilities --> left or rig
 direction of movement --> add until you read destination.
 
 
-
 Edge Cases:
 1. If source or target does not exist: route not possible return -1 (False)
 2. no common element found between the different subroutes if source and target
@@ -29,6 +28,7 @@ Possibility for further optimisation:
 #We will use recurring depth first search to get the route
 #directions: left or right.
 from typing import List, Any
+
 """
 	Convert the list of routes into a graph representation
 	Args: routes(list): List of routes
@@ -46,6 +46,9 @@ def convert_to_graph(routes):
     Returns:
     dict: Graph representation with nodes as keys and their connections as values.
     """
+    
+    assert all(instance(route,list) and  all(instance(element,int)  for element in route) for route in routes)
+
     graph = {}
     for route in routes:
         for i in range(len(route) - 1):
@@ -115,6 +118,7 @@ if __name__ == "__main__":
     path = dfs(graph, start, target)
 
     print (path)
+
 """
 its like a linked list
 Start: 1
