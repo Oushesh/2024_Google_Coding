@@ -43,8 +43,8 @@ def dfs(matrix,x,y,steps):
 	directions = [(-1,0),(1,0),(0,-1),(0,1)]
 
 	#For every direction: 
-	for dx,dy in direction:
-		nx,ny = x+dx,y+dy. #whether you need it now or later.
+	for dx,dy in directions:
+		nx,ny = x+dx,y+dy #whether you need it now or later.
 
 		#We check whether the 
 		if 0<=nx <len(matrix) and 0<=0<len(matrix[0]) and matrix[nx][ny]==0:
@@ -56,12 +56,13 @@ def dfs(matrix,x,y,steps):
 
 def get_min_steps(matrix):
 	# Find cells with values greater than 1 and perform DFS on it.
+	steps = 0
 	for i in range(len(matrix)):
-		for j in range(len(matrxi[0])):
+		for j in range(len(matrix[0])):
 			if matrix[i][j]>1:
-				steps+=1 #Count the initial cell as a step
 				matrix[i][j] = 1 
 				steps=dfs(matrix,i,j,steps) #Start DFS
+				steps+=1
 
 	# Check if all cells are filled with '1s'
 	for row in matrix:
@@ -70,22 +71,21 @@ def get_min_steps(matrix):
 
 	return steps
 
-
-
-
 if __name__ == "__main__":
-	input_matrix = [
+	matrix = [
 		[1,1,0],
 		[1,1,1],
 		[1,2,1]
 		]
 
-	input_matrix = [
+	matrix = [
 		[2,2,0],
 		[2,1,1],
 		[1,2,1]
 	]	
 
+	min_steps = get_min_steps(matrix)
+	print (min_steps)
 	"""
 	1,1,0.      
 	1,1,1  --> 0-->1-->1-->2
@@ -94,7 +94,7 @@ if __name__ == "__main__":
 
 	"""
 	##  Bare minimum is 1: starting point is 0 and the next point is 2. 
-	##  Bare minimum is 2: 
+	##  Bare minimum is 2: where to start and how
 
 
 

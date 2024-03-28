@@ -27,6 +27,7 @@ Possibility for further optimisation:
 
 #We will use recurring depth first search to get the route
 #directions: left or right.
+
 from typing import List, Any
 
 """
@@ -47,7 +48,7 @@ def convert_to_graph(routes):
     dict: Graph representation with nodes as keys and their connections as values.
     """
     
-    assert all(instance(route,list) and  all(instance(element,int)  for element in route) for route in routes)
+    assert all(isinstance(route,list) and  all(isinstance(element,int)  for element in route) for route in routes)
 
     graph = {}
     for route in routes:
