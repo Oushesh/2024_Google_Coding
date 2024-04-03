@@ -135,5 +135,55 @@ Question 2: Meta Engineer: Valid Moutain Array-->
 Array strictly increasing before that index
 and strcitly decreasing aft
 """
+from typing import List
 
+def check_strick_matrix(numbers:list)->bool:
+	"""
+	numbers: list
+	"""
+	assert isinstance(numbers,list)
+
+	increasing = 0 #var to track if numbers are strictly increasing or decreasing.
+	decreasing = 0 #varible to track if numbers are decreasing.
+	increasing_first = False
+	decreasing_first = False
+	
+	gradients = [0 for i in numbers]
+
+
+	#In Cases where the amount of elements is less 
+	#then 3: no ability to compute
+	if len(numbers)<3:
+		return False
+	
+	for i in range(len(numbers)-1):
+		if numbers[i+1]>numbers[i]:
+			increasing=1
+			gradients[i]=increasing
+			if increasing and not decreasing:
+				increasing_first = True
+
+		if numbers[i+1]<numbers[i]:
+			decreasing=1
+			
+			if increasing_first:
+				decreasing_first=True
+
+
+
+	if increasing_first and decreasing_first:
+		return True
+
+	return False
+
+
+if __name__ =="__main__":
+	numbers_list = [5,3,1,2,5,1,2]
+	print (check_strick_matrix(numbers_list))
+
+
+"""
+Lets walk the interviewer through:
+
+"""
 
