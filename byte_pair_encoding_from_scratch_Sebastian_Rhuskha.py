@@ -50,14 +50,10 @@ def byte_pair_encoding(input_string:str):
 
 		#Now we did build a hashmap and the chars with 
 		#Recognize the neighbouring ones 
-
-		
-
 	return None 
 
 
 if __name__ == "__main__":
 	input_string = "aaabdaabac"
 	print (byte_pair_encoding(input_string))
-
 
